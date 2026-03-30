@@ -2,7 +2,19 @@ const myModal = new bootstrap.Modal("#register-modal");
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
 
+seedDefaultAccount();
 checkLogged();
+
+function seedDefaultAccount() {
+    const defaultEmail = "user@example.com";
+    if (!localStorage.getItem(defaultEmail)) {
+        localStorage.setItem(defaultEmail, JSON.stringify({
+            login: defaultEmail,
+            password: "123456",
+            transactions: []
+        }));
+    }
+}
 
 //LOGAR NO SISTEMA
 document.getElementById("login-form").addEventListener("submit", function(e) {
@@ -27,7 +39,7 @@ document.getElementById("login-form").addEventListener("submit", function(e) {
 
         saveSession(email, checkSession);
 
-        window.location.href = "home.html";
+        window.location.href = "./public/html/home.html";
     }
 
 });
@@ -63,14 +75,14 @@ document.getElementById("create-form").addEventListener("submit", function(e) {
 
 function checkLogged(){
     if(session) {
-        session.setItem("logged", session);
+        sessionStorage.setItem("logged", session);
         logged = session;
     }
 
     if(logged) {
         saveSession(logged, session);
 
-        window.location.href = "home.html";
+        window.location.href = "./public/html/home.html";
     }
 }
 
