@@ -2,7 +2,19 @@ const myModal = new bootstrap.Modal("#register-modal");
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
 
+seedDefaultAccount();
 checkLogged();
+
+function seedDefaultAccount() {
+    const defaultEmail = "user@example.com";
+    if (!localStorage.getItem(defaultEmail)) {
+        localStorage.setItem(defaultEmail, JSON.stringify({
+            login: defaultEmail,
+            password: "123456",
+            transactions: []
+        }));
+    }
+}
 
 //LOGAR NO SISTEMA
 document.getElementById("login-form").addEventListener("submit", function(e) {
