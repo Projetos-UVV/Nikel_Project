@@ -39,12 +39,12 @@ checkLogged();
 
 function checkLogged(){
     if(session) {
-        session.setItem("logged", session);
+        sessionStorage.setItem("logged", session);
         logged = session;
     }
 
     if(!logged) {
-        window.location.href = "index.html";
+        window.location.href = "../../index.html";
         return;
     }
 
@@ -64,7 +64,7 @@ function logout() {
     sessionStorage.removeItem("logged");
     localStorage.removeItem("session");
 
-    window.location.href = "index.html";
+    window.location.href = "../../index.html";
 }
 
 function getCashIn() {

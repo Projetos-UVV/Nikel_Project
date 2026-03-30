@@ -27,7 +27,7 @@ document.getElementById("login-form").addEventListener("submit", function(e) {
 
         saveSession(email, checkSession);
 
-        window.location.href = "home.html";
+        window.location.href = "./public/html/home.html";
     }
 
 });
@@ -63,14 +63,14 @@ document.getElementById("create-form").addEventListener("submit", function(e) {
 
 function checkLogged(){
     if(session) {
-        session.setItem("logged", session);
+        sessionStorage.setItem("logged", session);
         logged = session;
     }
 
     if(logged) {
         saveSession(logged, session);
 
-        window.location.href = "home.html";
+        window.location.href = "./public/html/home.html";
     }
 }
 

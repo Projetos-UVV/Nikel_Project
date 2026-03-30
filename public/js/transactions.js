@@ -35,13 +35,13 @@ document.getElementById("transaction-form").addEventListener("submit", function 
 checkLogged();
 
 function checkLogged() {
-    if (session) { //aqui linha 38
-        session.setItem("logged", session);
+    if (session) {
+        sessionStorage.setItem("logged", session);
         logged = session;
     }
 
     if (!logged) {
-        window.location.href = "index.html";
+        window.location.href = "../../index.html";
         return;
     }
 
@@ -55,10 +55,10 @@ function checkLogged() {
 }
 
 function logout() {
-    sessionStorage.removeItem("logged"); //aqui linha 58
-    localStorage.removeItem("sessions");
+    sessionStorage.removeItem("logged");
+    localStorage.removeItem("session");
 
-    window.location.href = "index.html";
+    window.location.href = "../../index.html";
 }
 
 function getTransactions() {
